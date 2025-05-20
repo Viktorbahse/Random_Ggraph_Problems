@@ -14,6 +14,14 @@ def generate_gamma_samples(n, lambda_param):
     samples = np.random.gamma(alpha, 1 / lambda_param, n)
     return samples
 
+#Генерация Normal(0,σ); 
+def generate_normal_samles(loc=0, scale=1, size):
+    return np.random.normal(loc, sigma, size)
+
+#Генерация Student-t(ν) 
+def generate_standard_t_samles(df=3, size):
+    return np.random.standard_t(df, size)
+
 # Построение knn-графа
 def generate_knn_graph(sample, k):
     sample = np.array(sample).reshape(-1, 1)
@@ -78,6 +86,19 @@ def max_independent_set_size(graph):
     independent_set = nx.algorithms.approximation.maximum_independent_set(graph)
     return len(independent_set)
 
+#δ(G) - минимальная степень
+def max_node_degree(graph):
+    if not graph:
+        return 0
+
+    degrees = dict(graph.degree())
+    return min(degrees.values())
+
+#χ(G) - Хроматическое число
+def chromatic_number(graph):
+    if not graph:
+        return 0
+    return nx.algorithms.coloring.greedy_color(graph, strategy='largest_first', interchange=True) + 1
 
 # Эксперименты с графом knn и экспоненциальным распределением
 n_samples = 4000
