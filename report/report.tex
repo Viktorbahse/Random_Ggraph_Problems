@@ -46,6 +46,14 @@
     \item \textbf{Сложность}: O(nlog(n))
 \end{itemize}
 
+\subsubsection{$fast\_max\_independent\_set\_size()$}
+\begin{itemize}
+    \item \textbf{Назначение}: Вычисление размера максимального независимого множества для случайного графа построенного на данной выборке.
+    \item \textbf{Входные данные}: graph - граф
+    \item \textbf{Выходные данные}: int - размер независимого множества
+    \item \textbf{Сложность}: O(n+m)
+\end{itemize}
+
 \subsubsection{$greedy()$}
 \begin{itemize}
     \item \textbf{Назначение}: Жадное построение множества А, максимизирующие мощность критерия, при заданной допустимой ошибки первого рода.
@@ -67,18 +75,33 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{EX-1-1.png}
+    \includegraphics[width=0.9\textwidth]{гр1.png}
     \caption{$\quad \mathbb{E}[in\_\delta(G)]$ для KNN графа построенного на $Normal(0,\sigma)$}
     \label{fig:uml}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{EX-1-2.png}
+    \includegraphics[width=0.9\textwidth]{Гр2.png}
     \caption{$\quad \mathbb{E}[in\_\delta(G)]$ для KNN графа построенного на $Student-t(ν)$}
     \label{fig:uml}
 \end{figure}
 
+Графики экспоненциального и gamma-распределения выглядят хаотично. Не прослеживается никакая зависимость от параметров.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{граф1.png}
+    \caption{Максимальная степень вершины для KNN графа построенного на $Exp(\sigma)$}
+    \label{fig:uml}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Граф2.png}
+    \caption{Максимальная степень вершины для KNN графа построенного на $Gamma(ν)$}
+    \label{fig:uml}
+\end{figure}
 
 \subsection{Эксперимент 2}
 \subsubsection{Цель}
@@ -92,18 +115,33 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{EX-2-1.png}
+    \includegraphics[width=0.8\textwidth]{Гр3.png}
     \caption{$\quad \mathbb{E}[\chi(G)]$ для dist графа построенного на $Normal(0,\sigma)$}
     \label{fig:uml}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{EX-2-2.png}
+    \includegraphics[width=0.8\textwidth]{Гр4.png}
     \caption{$\quad \mathbb{E}[\chi(G)]$ для dist графа построенного на $Student-t(ν)$}
     \label{fig:uml}
 \end{figure}
 
+Размер максимального независимого множества убывает с увеличением параметра q и v. Однако для гамма-распределения зависимость несколько более хаотичная.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Граф3.png}
+    \caption{Размер макс. независимого множества для dist графа построенного на $Exp(\sigma)$}
+    \label{fig:uml}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Граф4.png}
+    \caption{Размер макс. независимого множества для dist графа построенного на $Gamma(ν)$}
+    \label{fig:uml}
+\end{figure}
 
 \subsection{Эксперимент 3}
 \subsubsection{Цель}
@@ -113,33 +151,51 @@
 \subsubsection{Результаты}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{EX-3-1.png}
+    \includegraphics[width=0.6\textwidth]{Гр5.png}
     \caption{$\quad \mathbb{E}[in\_\delta(G)]$ для KNN графа}
     \label{fig:uml}
 \end{figure}
 График для Normal выше, чем график для Student. Это может помочь в проверке истинности $H_0$ и $H_1$. \\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Граф5.png}
+    \caption{Макс. степень вершины для KNN графа}
+    \label{fig:uml}
+\end{figure}
+
+При больших k график Гамма-распределения находится выше экспоненциального распределения.
+
 \subsection{Эксперимент 4}
 \subsubsection{Цель}
 Исследовать, как ведет себя числовая характеристика T в зависимости
-от параметров процедуры построения графа и размера выборки при
+от параметров процедуры построения дистанционного графа и размера выборки при
 фиксированных значениях $\theta = \theta_0$ и $v = v_0$.\\
 \subsubsection{Результаты}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{EX-4-1.png}
+    \includegraphics[width=0.6\textwidth]{Гр6.png}
     \caption{$\quad \mathbb{E}[\chi(G)]$ для dist графа}
     \label{fig:uml}
 \end{figure}
 К сожалению, данные графики не сильно отличаются, в среднем график для Student-t(ν) ниже, чем график $Normal(0,\sigma)$.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Граф6.png}
+    \caption{Размер макс. независимого множества для dist графа}
+    \label{fig:uml}
+\end{figure}
+
+Экспонента в среднем выше, чем гамма-распределение.
+
 \subsection{Промежуточный вывод}
-Если обобщить результаты, полученные в предыдущих пунктах, то можно заметить, что каждая из характеристик показывает разные значения на случайных графах, построенных на распределениях $Student-t(ν)$ и нормальном распределении $Normal(0,\sigma)$. Это означает, что существует возможность использовать их для проверки истинности гипотез $H_0$ и $H_1$.
+Если обобщить результаты, полученные в предыдущих пунктах, то можно заметить, что каждая из характеристик показывает разные значения на случайных графах, построенных на распределениях $Student-t(ν)$ и нормальном распределении $Normal(0,\sigma)$. Это означает, что существует возможность использовать их для проверки истинности гипотез $H_0$ и $H_1$.\\
+Аналогичные рассуждения верны для экспоненциального и гамма распределений.
 
 \subsection{Эксперимент 5}
 \subsubsection{Цель}
-Построить множество $A$ в предположении $\theta = \theta_0$ и $v = v_0$ при мак-
-симальной допустимой вероятности ошибки первого рода $\alpha$ = 0.055.
+Построить множество $A$ в предположении $\theta = \theta_0$ и $v = v_0$ при максимальной допустимой вероятности ошибки первого рода $\alpha$ = 0.055.
 Оценить мощность полученного критерия.
 \subsubsection{Результаты}
 Для каждой характеристики удалось построить множество A.\\
@@ -150,6 +206,16 @@
 Ошибка первого рода $\alpha = 0.045.$\\
 Мощность полученного критерия 0.594.\\
 В первом случае результат значительно лучше.\\
+
+\\
+
+Используя характеристику макс. степень вершины в графе knn получен следующий результат:\\
+Ошибка первого рода $\alpha = 0.039.$\\
+Мощность полученного критерия 0.303.\\
+
+Используя характеристику размер макс. независимого множества в графе dist получен следующий результат:\\
+Ошибка первого рода $\alpha = 0.053.$\\
+Мощность полученного критерия 0.314.\\
 %\section{Заключение}
 %Итоговые выводы по проекту:
 %\begin{itemize}
